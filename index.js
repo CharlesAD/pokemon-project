@@ -18,9 +18,17 @@ function fetchPokemonData(pokemonName) {
 
 function displayPokemonData(pokemon) {
     const displayDiv = document.getElementById('pokemonInfo');
+    const types = pokemon.types.map(type => type.type.name).join(', ');
+    const abilities = pokemon.abilities.map(ability => ability.ability.name).join(', ');
+
     displayDiv.innerHTML = `
         <h2>${pokemon.name}</h2>
         <img src="${pokemon.sprites.front_default}" alt="${pokemon.name}">
+        <p><strong>Types:</strong> ${types}</p>
+        <p><strong>Abilities:</strong> ${abilities}</p>
+        <p><strong>Weight:</strong> ${pokemon.weight / 10} kg</p>
+        <p><strong>Height:</strong> ${pokemon.height / 10} m</p>
+        <p><strong>Species:</strong> ${pokemon.species.name}</p>
     `;
 }
 
